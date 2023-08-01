@@ -22,10 +22,10 @@ export default function Navbar() {
             Hoodies
           </Link>
         </div>
-        <div>
+        <div className="flex">
           <Search />
         </div>
-        <div>
+        <div className="flex">
           <Cart />
         </div>
       </div>

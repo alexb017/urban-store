@@ -2,7 +2,7 @@ import MagnifierIcon from "./icons/magnifier";
 
 export default function Search() {
   return (
-    <form className="w-max-[550px] relative flex items-center w-full">
+    <form className="max-w-lg relative flex items-center">
       <input
         type="text"
         name="search"
