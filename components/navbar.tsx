@@ -10,7 +10,7 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center">
             <LogoIcon className="w-6 h-6 mr-1" />
-            <div className="font-semibold">Urban Store</div>
+            <div className="font-semibold uppercase">Urban Store</div>
           </Link>
           <Link href="/all" className="text-sm">
             All
