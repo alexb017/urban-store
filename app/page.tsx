@@ -1,12 +1,10 @@
-import Carousel from "@/components/carousel";
-import Footer from "@/components/footer";
+import ThreeItemsGrid from "@/components/three-items";
 
 export default function Home() {
   return (
     <div>
       <h1>Welcome!</h1>
-      <Carousel />
-      <Footer />
+      <ThreeItemsGrid />
     </div>
   );
 }
