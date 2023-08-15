@@ -9,6 +9,10 @@ type Product = {
 };
 
 function Item({ item, size }: { item: Product; size: "full" | "half" }) {
+  const classFullPrice =
+    "flex items-center gap-2 absolute backdrop-blur bottom-48 left-28 border rounded-full py-1 px-1 pl-2 bg-slate-100 bg-opacity-30";
+  const classHalfPrice =
+    "flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-slate-100 bg-opacity-30";
   return (
     <div
       className={
@@ -18,7 +22,7 @@ function Item({ item, size }: { item: Product; size: "full" | "half" }) {
       }
     >
       <Link
-        className="relative block aspect-square w-full h-full bg-slate-50"
+        className="relative block aspect-square w-full h-full bg-slate-100"
         href={`/product/${item.id}`}
       >
         <Image
@@ -31,7 +35,7 @@ function Item({ item, size }: { item: Product; size: "full" | "half" }) {
               : "(min-width: 768px) 33vw, 100vw"
           }
         />
-        <div className="flex items-center gap-2 absolute bottom-3 left-3 border rounded-full py-1 px-2 bg-slate-100">
+        <div className={size === "full" ? classFullPrice : classHalfPrice}>
           <div className="text-xs">{item.name}</div>
           <div className="text-xs rounded-full py-1 px-2 text-white bg-blue-500">
             ${item.price} USD
