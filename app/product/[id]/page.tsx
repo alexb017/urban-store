@@ -1,4 +1,5 @@
 import Gallery from "@/components/gallery";
+import ProductDescription from "@/components/product-description";
 
 export default async function ProductPage({
   params: { id },
@@ -21,7 +22,9 @@ export default async function ProductPage({
             images={product.images.map((image: string) => ({ src: image }))}
           />
         </div>
-        <div className="basis-full lg:basis-2/6"></div>
+        <div className="basis-full lg:basis-2/6">
+          <ProductDescription product={product} />
+        </div>
       </div>
     </div>
   );
