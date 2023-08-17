@@ -18,38 +18,42 @@ export default function ProductDescription({ product }: { product: Product }) {
           ${product.price} USD
         </div>
       </div>
-      <div>
-        <h3 className="uppercase mb-1">color</h3>
-        <div className="flex items-center gap-2">
-          {product?.color?.map((color: string) => {
-            return (
-              <button
-                key={color}
-                type="button"
-                className="text-sm border rounded-full border-slate-300 py-1 px-2 bg-slate-200 hover:border-blue-500"
-              >
-                {color}
-              </button>
-            );
-          })}
+      {product?.color?.length > 1 && (
+        <div>
+          <h3 className="uppercase mb-1">color</h3>
+          <div className="flex items-center gap-2">
+            {product?.color?.map((color) => {
+              return (
+                <button
+                  key={color}
+                  type="button"
+                  className="text-sm border rounded-full border-slate-300 py-1 px-2 bg-slate-200 hover:border-blue-500"
+                >
+                  {color}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="my-6">
-        <h3 className="uppercase mb-1">size</h3>
-        <div className="flex items-center gap-2">
-          {product?.size?.map((size: string) => {
-            return (
-              <button
-                key={size}
-                type="button"
-                className="text-sm uppercase border rounded-full border-slate-300 py-1 px-4 bg-slate-200 hover:border-blue-500"
-              >
-                {size}
-              </button>
-            );
-          })}
+      )}
+      {product?.size?.length > 1 && (
+        <div className="my-6">
+          <h3 className="uppercase mb-1">size</h3>
+          <div className="flex items-center flex-wrap gap-2">
+            {product?.size?.map((size) => {
+              return (
+                <button
+                  key={size}
+                  type="button"
+                  className="text-sm uppercase border rounded-full border-slate-300 py-1 px-4 bg-slate-200 hover:border-blue-500"
+                >
+                  {size}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
       <p className="text-sm my-4">{product.details}</p>
       <AddToCart />
     </>
