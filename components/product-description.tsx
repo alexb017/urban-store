@@ -26,7 +26,7 @@ export default function ProductDescription({ product }: { product: Product }) {
               <button
                 key={color}
                 type="button"
-                className="text-sm border rounded-full border-slate-300 py-1 px-2"
+                className="text-sm border rounded-full border-slate-300 py-1 px-2 bg-slate-200 hover:border-blue-500"
               >
                 {color}
               </button>
@@ -42,7 +42,7 @@ export default function ProductDescription({ product }: { product: Product }) {
               <button
                 key={size}
                 type="button"
-                className="text-sm uppercase border rounded-full border-slate-300 py-1 px-4"
+                className="text-sm uppercase border rounded-full border-slate-300 py-1 px-4 bg-slate-200 hover:border-blue-500"
               >
                 {size}
               </button>
