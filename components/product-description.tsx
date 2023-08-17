@@ -21,7 +21,7 @@ export default function ProductDescription({ product }: { product: Product }) {
       <div>
         <h3 className="uppercase mb-1">color</h3>
         <div className="flex items-center gap-2">
-          {product?.color.map((color: string) => {
+          {product?.color?.map((color: string) => {
             return (
               <button
                 key={color}
@@ -37,7 +37,7 @@ export default function ProductDescription({ product }: { product: Product }) {
       <div className="my-6">
         <h3 className="uppercase mb-1">size</h3>
         <div className="flex items-center gap-2">
-          {product?.size.map((size: string) => {
+          {product?.size?.map((size: string) => {
             return (
               <button
                 key={size}

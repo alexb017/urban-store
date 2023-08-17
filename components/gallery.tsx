@@ -25,7 +25,7 @@ export default function Gallery({ images }: { images: { src: string }[] }) {
               {images.map((image, index) => {
                 const isActive = index === imageIndex;
                 const classname =
-                  "cursor-pointer border rounded-lg border-slate-200 hover:border-blue-500 bg-slate-200";
+                  "cursor-pointer backdrop-blur border rounded-lg border-slate-200 hover:border-blue-500 bg-slate-100 bg-opacity-30";
 
                 return (
                   <li key={index} className="h-20 w-20">
