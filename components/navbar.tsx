@@ -1,7 +1,7 @@
 import Link from "next/link";
 import LogoIcon from "./icons/logo";
 import Search from "./search";
-import Cart from "./cart";
+import Cart from "./cart/cart-modal";
 
 export default function Navbar() {
   return (

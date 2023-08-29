@@ -1,4 +1,4 @@
-import AddToCart from "./add-to-cart";
+import AddToCart from "./cart/add-to-cart";
 
 type Product = {
   id: number;
