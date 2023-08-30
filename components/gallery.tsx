@@ -1,10 +1,15 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Gallery({ images }: { images: { src: string }[] }) {
   const [imageIndex, setImageIndex] = useState(0);
+
+  const imageURL = images[imageIndex].src as string;
+  // Matches the last / and captures characters before the last .
+  const regex = /\/([^/]+)\.[^.]+$/;
+  const imageAlt = imageURL.match(regex);
 
   return (
     <>
@@ -14,8 +19,8 @@ export default function Gallery({ images }: { images: { src: string }[] }) {
             className="h-full w-full object-contain"
             fill
             sizes="(min-width: 1024px) 66vw, 100vw"
-            src={images[imageIndex].src as string}
-            alt=""
+            src={imageURL}
+            alt={imageAlt?.[1] as string}
           />
         )}
 
@@ -25,13 +30,15 @@ export default function Gallery({ images }: { images: { src: string }[] }) {
               {images.map((image, index) => {
                 const isActive = index === imageIndex;
                 const classname =
-                  "cursor-pointer backdrop-blur border rounded-lg hover:border-blue-500 bg-slate-100 bg-opacity-30";
+                  'cursor-pointer backdrop-blur border rounded-lg hover:border-blue-500 bg-slate-100 bg-opacity-30';
+
+                const imgAlt = image.src.match(regex);
 
                 return (
                   <li key={index} className="h-20 w-20">
                     <Image
                       src={image.src}
-                      alt=""
+                      alt={imgAlt?.[1] as string}
                       className={
                         isActive
                           ? `${classname} border-2 border-blue-500`

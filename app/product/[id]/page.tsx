@@ -1,12 +1,12 @@
-import Gallery from "@/components/gallery";
-import ProductDescription from "@/components/product-description";
-import Link from "next/link";
-import Image from "next/image";
+import Gallery from '@/components/gallery';
+import ProductDescription from '@/components/product-description';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default async function ProductPage({
   params: { id },
 }: {
-  params: { id: number };
+  params: { id: string };
 }) {
   const res = await fetch(
     `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsDetails/id${id}.json`,
@@ -40,14 +40,16 @@ type Product = {
   price: string;
 };
 
-async function RelatedProducts({ id }: { id: number }) {
+async function RelatedProducts({ id }: { id: string }) {
   const res = await fetch(
-    "https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-    { cache: "no-store" }
+    'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+    { cache: 'no-store' }
   );
   const products: Product[] = (await res.json()) || [];
 
-  const filteredProducts = products.filter((product) => product.id !== id);
+  const filteredProducts = products.filter(
+    (product) => product.id !== Number.parseInt(id, 10)
+  );
 
   return (
     <div className="py-8">
