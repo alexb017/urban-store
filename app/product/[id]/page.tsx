@@ -47,6 +47,7 @@ async function RelatedProducts({ id }: { id: string }) {
   );
   const products: Product[] = (await res.json()) || [];
 
+  // remove the main product
   const filteredProducts = products.filter(
     (product) => product.id !== Number.parseInt(id, 10)
   );

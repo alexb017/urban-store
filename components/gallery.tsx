@@ -7,6 +7,7 @@ export default function Gallery({ images }: { images: { src: string }[] }) {
   const [imageIndex, setImageIndex] = useState(0);
 
   const imageURL = images[imageIndex].src as string;
+
   // Matches the last / and captures characters before the last .
   const regex = /\/([^/]+)\.[^.]+$/;
   const imageAlt = imageURL.match(regex);
@@ -21,6 +22,7 @@ export default function Gallery({ images }: { images: { src: string }[] }) {
             sizes="(min-width: 1024px) 66vw, 100vw"
             src={imageURL}
             alt={imageAlt?.[1] as string}
+            priority={true}
           />
         )}
 

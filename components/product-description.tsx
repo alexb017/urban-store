@@ -1,4 +1,7 @@
-import AddToCart from "./cart/add-to-cart";
+'use client';
+
+import { useState } from 'react';
+import AddToCart from './cart/add-to-cart';
 
 type Product = {
   id: number;
@@ -10,6 +13,9 @@ type Product = {
 };
 
 export default function ProductDescription({ product }: { product: Product }) {
+  const [colorValue, setColorValue] = useState('');
+  const [sizeValue, setSizeValue] = useState('');
+
   return (
     <>
       <div className="mb-6 flex flex-col border-b border-slate-300 pb-6">
@@ -23,11 +29,16 @@ export default function ProductDescription({ product }: { product: Product }) {
           <h3 className="uppercase mb-1">color</h3>
           <div className="flex items-center gap-2">
             {product?.color?.map((color) => {
+              const classname =
+                'text-sm border rounded-full border-slate-300 py-1 px-2 bg-slate-200 hover:border-blue-500';
               return (
                 <button
                   key={color}
                   type="button"
-                  className="text-sm border rounded-full border-slate-300 py-1 px-2 bg-slate-200 hover:border-blue-500"
+                  className={
+                    colorValue ? `${classname} border-blue-500` : `${classname}`
+                  }
+                  onClick={() => setColorValue(color)}
                 >
                   {color}
                 </button>
