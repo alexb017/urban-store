@@ -29,14 +29,17 @@ export default function ProductDescription({ product }: { product: Product }) {
           <h3 className="uppercase mb-1">color</h3>
           <div className="flex items-center gap-2">
             {product?.color?.map((color) => {
+              const isActive = color === colorValue;
               const classname =
-                'text-sm border rounded-full border-slate-300 py-1 px-2 bg-slate-200 hover:border-blue-500';
+                'text-sm border rounded-full py-1 px-2 bg-slate-200 hover:border-blue-500';
               return (
                 <button
                   key={color}
                   type="button"
                   className={
-                    colorValue ? `${classname} border-blue-500` : `${classname}`
+                    isActive
+                      ? `${classname} border-2 border-blue-500`
+                      : `${classname} border-slate-200`
                   }
                   onClick={() => setColorValue(color)}
                 >
@@ -52,11 +55,19 @@ export default function ProductDescription({ product }: { product: Product }) {
           <h3 className="uppercase mb-1">size</h3>
           <div className="flex items-center flex-wrap gap-2">
             {product?.size?.map((size) => {
+              const isActive = size === sizeValue;
+              const classname =
+                'text-sm uppercase border rounded-full py-1 px-4 bg-slate-200 hover:border-blue-500';
               return (
                 <button
                   key={size}
                   type="button"
-                  className="text-sm uppercase border rounded-full border-slate-300 py-1 px-4 bg-slate-200 hover:border-blue-500"
+                  className={
+                    isActive
+                      ? `${classname} border-2 border-blue-500`
+                      : `${classname} border-slate-200`
+                  }
+                  onClick={() => setSizeValue(size)}
                 >
                   {size}
                 </button>
@@ -66,7 +77,7 @@ export default function ProductDescription({ product }: { product: Product }) {
         </div>
       )}
       <p className="text-sm my-4">{product.details}</p>
-      <AddToCart />
+      <AddToCart product={product} color={colorValue} size={sizeValue} />
     </>
   );
 }

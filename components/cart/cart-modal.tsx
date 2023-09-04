@@ -1,13 +1,24 @@
-"use client";
+'use client';
 
-import { Dialog, Transition } from "@headlessui/react";
-import CartIcon from "../icons/cart";
-import { useState } from "react";
-import CloseIcon from "../icons/close";
+import { Dialog, Transition } from '@headlessui/react';
+import CartIcon from '../icons/cart';
+import { useState } from 'react';
+import CloseIcon from '../icons/close';
 
-export default function CartModal() {
+type Cart = {
+  id: number;
+  image: string;
+  name: string;
+  price: string;
+  color: string;
+  size: string;
+};
+
+export default function CartModal({ cart }: { cart: Cart[] | [] }) {
   const [isOpen, setIsOpen] = useState(false);
   const quantity = 0;
+
+  console.log(cart);
 
   function openCart() {
     setIsOpen(true);
@@ -17,6 +28,11 @@ export default function CartModal() {
     setIsOpen(false);
   }
 
+  const arr: Cart[] = Object.entries(cart)
+    .filter(([key, value]) => key !== '-Nd')
+    .map(([key, value]) => value);
+
+  console.log(arr);
   return (
     <>
       <button
@@ -40,6 +56,15 @@ export default function CartModal() {
                 <CloseIcon className="w-5 h-5" />
               </button>
             </div>
+            {arr.map((item) => {
+              return (
+                <li key={item.id}>
+                  <div>{item.name}</div>
+                  <div>{item?.color}</div>
+                  <div>{item?.size}</div>
+                </li>
+              );
+            })}
           </Dialog.Panel>
         </Dialog>
       </Transition>

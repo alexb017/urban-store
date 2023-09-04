@@ -1,5 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
 
 type Product = {
   id: number;
@@ -8,17 +8,17 @@ type Product = {
   image: string;
 };
 
-function Item({ item, size }: { item: Product; size: "full" | "half" }) {
+function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
   const classFullPrice =
-    "flex items-center gap-2 absolute backdrop-blur bottom-48 left-28 border rounded-full py-1 px-1 pl-2 bg-slate-100 bg-opacity-30";
+    'flex items-center gap-2 absolute backdrop-blur bottom-48 left-28 border rounded-full py-1 px-1 pl-2 bg-slate-100 bg-opacity-30';
   const classHalfPrice =
-    "flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-slate-100 bg-opacity-30";
+    'flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-slate-100 bg-opacity-30';
   return (
     <div
       className={
-        size === "full"
-          ? "md:col-span-4 md:row-span-2"
-          : "md:col-span-2 md:row-span-1"
+        size === 'full'
+          ? 'md:col-span-4 md:row-span-2'
+          : 'md:col-span-2 md:row-span-1'
       }
     >
       <Link
@@ -30,14 +30,14 @@ function Item({ item, size }: { item: Product; size: "full" | "half" }) {
           alt={item.name}
           fill
           sizes={
-            size === "full"
-              ? "(min-width: 768px) 66vw, 100vw"
-              : "(min-width: 768px) 33vw, 100vw"
+            size === 'full'
+              ? '(min-width: 768px) 66vw, 100vw'
+              : '(min-width: 768px) 33vw, 100vw'
           }
         />
-        <div className={size === "full" ? classFullPrice : classHalfPrice}>
+        <div className={size === 'full' ? classFullPrice : classHalfPrice}>
           <div className="text-xs">{item.name}</div>
-          <div className="text-xs rounded-full py-1 px-2 text-white bg-blue-500">
+          <div className="text-xs text-center rounded-full py-1 px-2 text-white bg-blue-500">
             ${item.price} USD
           </div>
         </div>
@@ -48,8 +48,8 @@ function Item({ item, size }: { item: Product; size: "full" | "half" }) {
 
 export default async function ThreeItemsGrid() {
   const res = await fetch(
-    "https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-    { cache: "no-store" }
+    'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+    { cache: 'no-store' }
   );
   const products: any[] = (await res.json()) || [];
 

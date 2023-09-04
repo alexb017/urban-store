@@ -32,7 +32,7 @@ export default function Gallery({ images }: { images: { src: string }[] }) {
               {images.map((image, index) => {
                 const isActive = index === imageIndex;
                 const classname =
-                  'cursor-pointer backdrop-blur border rounded-lg hover:border-blue-500 bg-slate-100 bg-opacity-30';
+                  'cursor-pointer backdrop-blur border rounded-lg hover:border-blue-500 bg-opacity-30';
 
                 const imgAlt = image.src.match(regex);
 
