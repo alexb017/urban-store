@@ -34,6 +34,7 @@ export default function AddToCart({
               size: size,
               image: product.images[0],
               imgUrl: url,
+              quantity: 1,
             }),
           }
         );

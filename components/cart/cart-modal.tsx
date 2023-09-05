@@ -2,10 +2,12 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import CartIcon from '../icons/cart';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CloseIcon from '../icons/close';
 import Link from 'next/link';
 import Image from 'next/image';
+import DeleteItem from './delete-item';
+import EditItemQuantity from './edit-item';
 
 type Cart = {
   id: number;
@@ -15,13 +17,13 @@ type Cart = {
   color: string;
   size: string;
   imgUrl: string;
+  quantity: number;
 };
 
 export default function CartModal({ cart }: { cart: Cart[] | [] }) {
   const [isOpen, setIsOpen] = useState(false);
-  const quantity = 0;
 
-  console.log(cart);
+  console.log(typeof cart);
 
   function openCart() {
     setIsOpen(true);
@@ -31,11 +33,18 @@ export default function CartModal({ cart }: { cart: Cart[] | [] }) {
     setIsOpen(false);
   }
 
+  // convert object into array, remove the keys and add the nested objects in an array
   const arr: Cart[] = Object.entries(cart)
     .filter(([key, value]) => key !== '-Nd')
     .map(([key, value]) => value);
 
-  console.log(arr);
+  const quantity = arr.reduce((total, product) => total + product.quantity, 0);
+  const totalPrice = arr.reduce(
+    (total, product) => total + Number.parseInt(product.price, 10),
+    0
+  );
+
+  console.log(typeof arr);
   return (
     <>
       <button
@@ -65,29 +74,73 @@ export default function CartModal({ cart }: { cart: Cart[] | [] }) {
                 <p className="mt-6 text-2xl font-bold">Your cart is empty.</p>
               </div>
             ) : (
-              <div className="h-full flex flex-col justify-between p-1">
-                <ul className="py-4">
+              <div className="h-full flex flex-col justify-between overflow-hidden p-1">
+                <ul className="flex-grow py-4 overflow-auto">
                   {arr.map((item) => {
                     return (
                       <li
                         key={item.id}
                         className="w-full flex flex-col border-b border-neutral-300"
                       >
-                        <div className="relative flex flex-row justify-between">
-                          <Link href={item.imgUrl}>
-                            <Image
-                              className="h-full w-full object-cover"
-                              src={item.image}
-                              alt={item.name}
-                              width={64}
-                              height={64}
-                            />
+                        <div className="relative flex flex-row justify-between px-1 py-4">
+                          <div className="absolute z-40 -mt-2 ml-[55px]">
+                            <DeleteItem />
+                          </div>
+                          <Link
+                            href={item.imgUrl}
+                            className="flex flex-row space-x-4"
+                          >
+                            <div className="border rounded-md border-neutral-300">
+                              <Image
+                                className="h-full w-full object-cover"
+                                src={item.image}
+                                alt={item.name}
+                                width={64}
+                                height={64}
+                              />
+                            </div>
+                            <div className="flex flex-1 flex-col justify-center">
+                              <h3 className="text-sm">{item.name}</h3>
+                              <p className="text-xs">
+                                {item?.color}{' '}
+                                {item?.size && (
+                                  <span className="uppercase">
+                                    / {item?.size}
+                                  </span>
+                                )}
+                              </p>
+                            </div>
                           </Link>
+                          <div className="flex flex-col items-end justify-center">
+                            <p className="text-sm">${item.price} USD</p>
+                            <div className="flex items-center border rounded-full mt-1">
+                              <EditItemQuantity item={item} type="minus" />
+                              <p className="text-sm px-1">{item?.quantity}</p>
+                              <EditItemQuantity item={item} type="plus" />
+                            </div>
+                          </div>
                         </div>
                       </li>
                     );
                   })}
                 </ul>
+                <div className="py-4 text-sm">
+                  <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                    <p>Taxes</p>
+                    <p>$0.00 USD</p>
+                  </div>
+                  <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                    <p>Shipping</p>
+                    <p>Calculated at checkout</p>
+                  </div>
+                  <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                    <p>Total</p>
+                    <p>${totalPrice.toFixed(2)} USD</p>
+                  </div>
+                </div>
+                <button className="w-full rounded-full p-3 text-center font-medium text-sm text-white bg-blue-500">
+                  Procced to Checkout
+                </button>
               </div>
             )}
           </Dialog.Panel>

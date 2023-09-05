@@ -7,7 +7,5 @@ export default async function Cart() {
   );
   const data: any = (await res.json()) || [];
 
-  console.log(data);
-
   return <CartModal cart={data} />;
 }
