@@ -13,31 +13,35 @@ export default function AddToCart({
 }) {
   const router = useRouter();
   const url = usePathname();
-  const randomId = Math.floor(Math.random() * 100) + 1;
+  const randomId: number = Math.floor(Math.random() * 100) + 1;
   return (
     <button
       type="button"
       className="flex items-center justify-center gap-2 w-full p-4 mt-4 rounded-full bg-blue-500 text-white hover:opacity-90"
       onClick={async () => {
-        await fetch(
-          `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart.json`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: randomId,
-              name: product.name,
-              price: product.price,
-              color: color,
-              size: size,
-              image: product.images[0],
-              imgUrl: url,
-              quantity: 1,
-            }),
-          }
-        );
+        try {
+          await fetch(
+            `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/id${randomId}.json`,
+            {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id: randomId,
+                name: product.name,
+                price: product.price,
+                color: color,
+                size: size,
+                image: product.images[0],
+                imgUrl: url,
+                quantity: 1,
+              }),
+            }
+          );
+        } catch (error) {
+          console.error('Error adding new product');
+        }
 
         router.refresh();
       }}

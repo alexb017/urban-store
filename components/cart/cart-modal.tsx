@@ -20,10 +20,19 @@ type Cart = {
   quantity: number;
 };
 
-export default function CartModal({ cart }: { cart: Cart[] | [] }) {
+export default function CartModal({ cart }: { cart: Cart }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(typeof cart);
+  // convert object of objects to an array
+  const arr: any[] = Object.entries(cart).map(([key, value]) => value);
+
+  const quantity = arr.reduce((total, product) => total + product.quantity, 0);
+  const totalPrice = arr.reduce(
+    (total, product) =>
+      total + Number.parseInt(product.price, 10) * product.quantity,
+    0
+  );
+  console.log(cart);
 
   function openCart() {
     setIsOpen(true);
@@ -33,18 +42,7 @@ export default function CartModal({ cart }: { cart: Cart[] | [] }) {
     setIsOpen(false);
   }
 
-  // convert object into array, remove the keys and add the nested objects in an array
-  const arr: Cart[] = Object.entries(cart)
-    .filter(([key, value]) => key !== '-Nd')
-    .map(([key, value]) => value);
-
-  const quantity = arr.reduce((total, product) => total + product.quantity, 0);
-  const totalPrice = arr.reduce(
-    (total, product) => total + Number.parseInt(product.price, 10),
-    0
-  );
-
-  console.log(typeof arr);
+  console.log(arr);
   return (
     <>
       <button
@@ -84,7 +82,7 @@ export default function CartModal({ cart }: { cart: Cart[] | [] }) {
                       >
                         <div className="relative flex flex-row justify-between px-1 py-4">
                           <div className="absolute z-40 -mt-2 ml-[55px]">
-                            <DeleteItem />
+                            <DeleteItem id={item.id} />
                           </div>
                           <Link
                             href={item.imgUrl}
@@ -115,7 +113,7 @@ export default function CartModal({ cart }: { cart: Cart[] | [] }) {
                             <p className="text-sm">${item.price} USD</p>
                             <div className="flex items-center border rounded-full mt-1">
                               <EditItemQuantity item={item} type="minus" />
-                              <p className="text-sm px-1">{item?.quantity}</p>
+                              <p className="text-sm px-1">{item.quantity}</p>
                               <EditItemQuantity item={item} type="plus" />
                             </div>
                           </div>
