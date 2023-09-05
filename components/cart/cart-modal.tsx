@@ -4,6 +4,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import CartIcon from '../icons/cart';
 import { useState } from 'react';
 import CloseIcon from '../icons/close';
+import Link from 'next/link';
+import Image from 'next/image';
 
 type Cart = {
   id: number;
@@ -12,6 +14,7 @@ type Cart = {
   price: string;
   color: string;
   size: string;
+  imgUrl: string;
 };
 
 export default function CartModal({ cart }: { cart: Cart[] | [] }) {
@@ -53,18 +56,40 @@ export default function CartModal({ cart }: { cart: Cart[] | [] }) {
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-bold">My Cart</h3>
               <button type="button" onClick={closeCart}>
-                <CloseIcon className="w-5 h-5" />
+                <CloseIcon className="h-5" />
               </button>
             </div>
-            {arr.map((item) => {
-              return (
-                <li key={item.id}>
-                  <div>{item.name}</div>
-                  <div>{item?.color}</div>
-                  <div>{item?.size}</div>
-                </li>
-              );
-            })}
+            {arr.length === 0 ? (
+              <div className="mt-20 w-full flex flex-col items-center justify-center">
+                <CartIcon className="h-16" />
+                <p className="mt-6 text-2xl font-bold">Your cart is empty.</p>
+              </div>
+            ) : (
+              <div className="h-full flex flex-col justify-between p-1">
+                <ul className="py-4">
+                  {arr.map((item) => {
+                    return (
+                      <li
+                        key={item.id}
+                        className="w-full flex flex-col border-b border-neutral-300"
+                      >
+                        <div className="relative flex flex-row justify-between">
+                          <Link href={item.imgUrl}>
+                            <Image
+                              className="h-full w-full object-cover"
+                              src={item.image}
+                              alt={item.name}
+                              width={64}
+                              height={64}
+                            />
+                          </Link>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
           </Dialog.Panel>
         </Dialog>
       </Transition>

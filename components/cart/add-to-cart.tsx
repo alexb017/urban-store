@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function AddToCart({
   product,
@@ -12,6 +12,7 @@ export default function AddToCart({
   size: string;
 }) {
   const router = useRouter();
+  const url = usePathname();
   const randomId = Math.floor(Math.random() * 100) + 1;
   return (
     <button
@@ -32,6 +33,7 @@ export default function AddToCart({
               color: color,
               size: size,
               image: product.images[0],
+              imgUrl: url,
             }),
           }
         );
