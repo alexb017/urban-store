@@ -46,7 +46,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
       <button
         type="button"
         onClick={openCart}
-        className="relative flex text-neutral-500"
+        className="relative flex text-neutral-500 p-2 border rounded border-neutral-300"
       >
         <CartIcon className="w-5 h-5" />
         {quantity > 0 && (
@@ -60,13 +60,17 @@ export default function CartModal({ cart }: { cart: Cart }) {
           <Dialog.Panel className="fixed top-0 right-0 bottom-0 flex flex-col w-full h-full border-1 border-slate-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px]">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-bold">My Cart</h3>
-              <button type="button" onClick={closeCart}>
+              <button
+                type="button"
+                onClick={closeCart}
+                className="flex text-neutral-500 p-2 border rounded border-neutral-300"
+              >
                 <CloseIcon className="h-5" />
               </button>
             </div>
             {arr.length === 0 ? (
               <div className="mt-20 w-full flex flex-col items-center justify-center">
-                <CartIcon className="h-16" />
+                <CartIcon className="h-16 " />
                 <p className="mt-6 text-2xl font-bold">Your cart is empty.</p>
               </div>
             ) : (
