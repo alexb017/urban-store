@@ -22,7 +22,7 @@ export default function EditItemQuantity({
     if (item.quantity === 1 && type === 'minus') return;
 
     try {
-      await fetch(
+      const res = await fetch(
         `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/id${item.id}.json`,
         {
           method: 'PUT',
@@ -32,8 +32,12 @@ export default function EditItemQuantity({
           body: JSON.stringify(quantity),
         }
       );
+
+      if (!res.ok) {
+        throw new Error('Request failed');
+      }
     } catch (error) {
-      console.error('Error updating item quantity');
+      throw 'Error updating item quantity';
     }
 
     router.refresh();

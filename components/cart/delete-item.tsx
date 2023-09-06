@@ -8,14 +8,18 @@ export default function DeleteItem({ id }: { id: string }) {
 
   async function deleteItem(id: string) {
     try {
-      await fetch(
+      const res = await fetch(
         `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/id${id}.json`,
         {
           method: 'DELETE',
         }
       );
+
+      if (!res.ok) {
+        throw new Error('Request failed');
+      }
     } catch (error) {
-      console.error('Error removing item from cart');
+      throw 'Error removing item from cart';
     }
 
     router.refresh();

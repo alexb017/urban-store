@@ -20,7 +20,7 @@ export default function AddToCart({
       className="flex items-center justify-center gap-2 w-full p-4 mt-4 rounded-full bg-blue-500 text-white hover:opacity-90"
       onClick={async () => {
         try {
-          await fetch(
+          const res = await fetch(
             `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/id${randomId}.json`,
             {
               method: 'PUT',
@@ -39,8 +39,12 @@ export default function AddToCart({
               }),
             }
           );
+
+          if (!res.ok) {
+            throw new Error('Request failed');
+          }
         } catch (error) {
-          console.error('Error adding new product');
+          throw 'Error adding new item to cart';
         }
 
         router.refresh();

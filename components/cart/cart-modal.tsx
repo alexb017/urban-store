@@ -32,7 +32,6 @@ export default function CartModal({ cart }: { cart: Cart }) {
       total + Number.parseInt(product.price, 10) * product.quantity,
     0
   );
-  console.log(cart);
 
   function openCart() {
     setIsOpen(true);
@@ -42,7 +41,6 @@ export default function CartModal({ cart }: { cart: Cart }) {
     setIsOpen(false);
   }
 
-  console.log(arr);
   return (
     <>
       <button

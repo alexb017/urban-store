@@ -47,11 +47,21 @@ function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
 }
 
 export default async function ThreeItemsGrid() {
-  const res = await fetch(
-    'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
-    { cache: 'no-store' }
-  );
-  const products: any[] = (await res.json()) || [];
+  let products: any[];
+  try {
+    const res = await fetch(
+      'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+      { cache: 'no-store' }
+    );
+
+    if (!res.ok) {
+      throw new Error('Request failed');
+    }
+
+    products = (await res.json()) || [];
+  } catch (error) {
+    throw 'An error has occurred';
+  }
 
   if (!products[0] || !products[1] || !products[2]) {
     return null;

@@ -8,13 +8,24 @@ export default async function ProductPage({
 }: {
   params: { id: string };
 }) {
-  const res = await fetch(
-    `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsDetails/id${id}.json`,
-    {
-      next: { revalidate: 10 },
+  let product: any;
+
+  try {
+    const res = await fetch(
+      `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsDetails/id${id}.json`,
+      {
+        next: { revalidate: 10 },
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error('Request failed');
     }
-  );
-  const product: any = await res.json();
+
+    product = (await res.json()) || [];
+  } catch (error) {
+    throw 'An error has occurred';
+  }
 
   return (
     <div className="mx-auto max-w-screen-2xl px-4">
@@ -41,13 +52,24 @@ type Product = {
 };
 
 async function RelatedProducts({ id }: { id: string }) {
-  const res = await fetch(
-    'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
-    { cache: 'no-store' }
-  );
-  const products: Product[] = (await res.json()) || [];
+  let products: Product[];
 
-  // remove the main product
+  try {
+    const res = await fetch(
+      'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+      { cache: 'no-store' }
+    );
+
+    if (!res.ok) {
+      throw new Error('Request failed');
+    }
+
+    products = (await res.json()) || [];
+  } catch (error) {
+    throw 'An error has occurred';
+  }
+
+  // remove the product from current page
   const filteredProducts = products.filter(
     (product) => product.id !== Number.parseInt(id, 10)
   );
