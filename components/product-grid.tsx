@@ -17,7 +17,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
           <Link
             key={product.id}
             className="relative block aspect-square w-full h-full bg-slate-100"
-            href={`/search/${product.category}`}
+            href={`/search/${product.id}`}
           >
             <Image
               src={product.image}

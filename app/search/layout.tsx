@@ -1,4 +1,5 @@
 import Collections from '@/components/collections';
+import FilterItem from '@/components/filter-item';
 
 export default function LayoutSearch({
   children,
@@ -12,12 +13,7 @@ export default function LayoutSearch({
       </div>
       <div className="min-h-screen w-full">{children}</div>
       <div className="flex-none md:w-[125px]">
-        <h1>Sort by</h1>
-        <ul>
-          <li>Relevance</li>
-          <li>Price: Low to high</li>
-          <li>Price: High to low</li>
-        </ul>
+        <FilterItem />
       </div>
     </div>
   );
