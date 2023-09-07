@@ -12,7 +12,7 @@ export default function Navbar() {
             <LogoIcon className="w-6 h-6 mr-1" />
             <div className="font-semibold uppercase">Urban Store</div>
           </Link>
-          <Link href="/all" className="text-sm">
+          <Link href="/search" className="text-sm">
             All
           </Link>
           <Link href="/shirts" className="text-sm">
@@ -22,9 +22,9 @@ export default function Navbar() {
             Hoodies
           </Link>
         </div>
-        <div className="flex">
+        {/* <div className="flex">
           <Search />
-        </div>
+        </div> */}
         <div className="flex">
           <Cart />
         </div>
