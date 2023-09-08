@@ -22,7 +22,7 @@ function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
       }
     >
       <Link
-        className="relative block aspect-square w-full h-full bg-slate-100"
+        className="relative block aspect-square w-full h-full bg-slate-100 overflow-hidden group"
         href={`/product/${item.id}`}
       >
         <Image
@@ -34,6 +34,7 @@ function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
               ? '(min-width: 768px) 66vw, 100vw'
               : '(min-width: 768px) 33vw, 100vw'
           }
+          className="group-hover:scale-105 transition-transform"
         />
         <div className={size === 'full' ? classFullPrice : classHalfPrice}>
           <div className="text-xs">{item.name}</div>

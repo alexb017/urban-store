@@ -88,11 +88,11 @@ export default function CartModal({ cart }: { cart: Cart }) {
                           </div>
                           <Link
                             href={item.imgUrl}
-                            className="flex flex-row space-x-4"
+                            className="flex flex-row space-x-4 overflow-hidden group"
                           >
                             <div className="border rounded-md border-neutral-300">
                               <Image
-                                className="h-full w-full object-cover"
+                                className="h-full w-full object-cover group-hover:scale-105 transition-transform"
                                 src={item.image}
                                 alt={item.name}
                                 width={64}

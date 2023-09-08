@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Collections() {
   const pathname = usePathname();
-  console.log(pathname);
+
   return (
     <>
       <h3 className="text-xs text-slate-500 font-bold">Collections</h3>
@@ -24,14 +24,14 @@ export default function Collections() {
         </li>
         <li>
           <Link
-            href="/search/shirt"
+            href="/search/shirts"
             className={`text-sm hover:text-black ${
               pathname === '/search/shirt'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
             }`}
           >
-            T-Shirts
+            Shirts
           </Link>
         </li>
         <li>
@@ -60,9 +60,9 @@ export default function Collections() {
         </li>
         <li>
           <Link
-            href="/search/bag"
+            href="/search/bags"
             className={`text-sm hover:text-black ${
-              pathname === '/search/bag'
+              pathname === '/search/bags'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
             }`}
@@ -84,9 +84,9 @@ export default function Collections() {
         </li>
         <li>
           <Link
-            href="/search/hoodie"
+            href="/search/hoodies"
             className={`text-sm hover:text-black ${
-              pathname === '/search/hoodie'
+              pathname === '/search/hoodies'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
             }`}
@@ -96,14 +96,14 @@ export default function Collections() {
         </li>
         <li>
           <Link
-            href="/search/sweater"
+            href="/search/sweaters"
             className={`text-sm hover:text-black ${
-              pathname === '/search/sweater'
+              pathname === '/search/sweaters'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
             }`}
           >
-            Sweater
+            Sweaters
           </Link>
         </li>
       </ul>

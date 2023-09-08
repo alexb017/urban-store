@@ -84,7 +84,7 @@ async function RelatedProducts({ id }: { id: string }) {
             className="aspect-ratio w-full flex-none min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
           >
             <Link
-              className="relative block aspect-square w-full h-full bg-slate-100"
+              className="relative block aspect-square w-full h-full bg-slate-100 overflow-hidden group"
               href={`/product/${product.id}`}
             >
               <Image
@@ -92,6 +92,7 @@ async function RelatedProducts({ id }: { id: string }) {
                 alt={product.name}
                 fill
                 sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
+                className="group-hover:scale-105 transition-transform"
               />
               <div className="flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-slate-100 bg-opacity-30">
                 <div className="text-xs">{product.name}</div>
