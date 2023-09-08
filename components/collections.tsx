@@ -26,7 +26,7 @@ export default function Collections() {
           <Link
             href="/search/shirts"
             className={`text-sm hover:text-black ${
-              pathname === '/search/shirt'
+              pathname === '/search/shirts'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
             }`}

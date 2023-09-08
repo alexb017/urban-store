@@ -15,10 +15,10 @@ export default function Navbar() {
           <Link href="/search" className="text-sm">
             All
           </Link>
-          <Link href="/shirts" className="text-sm">
+          <Link href="/search/shirts" className="text-sm">
             Shirts
           </Link>
-          <Link href="/hoodies" className="text-sm">
+          <Link href="/search/hoodies" className="text-sm">
             Hoodies
           </Link>
         </div>

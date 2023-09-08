@@ -12,9 +12,9 @@ export default function LayoutSearch({
         <Collections />
       </div>
       <div className="min-h-screen w-full">{children}</div>
-      <div className="flex-none md:w-[125px]">
+      {/* <div className="flex-none md:w-[125px]">
         <FilterItem />
-      </div>
+      </div> */}
     </div>
   );
 }

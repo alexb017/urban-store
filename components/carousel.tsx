@@ -9,11 +9,22 @@ type Product = {
 };
 
 export default async function Carousel() {
-  const res = await fetch(
-    'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
-    { cache: 'no-store' }
-  );
-  const products: Product[] = (await res.json()) || [];
+  let products: Product[];
+
+  try {
+    const res = await fetch(
+      'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+      { cache: 'no-store' }
+    );
+
+    if (!res.ok) {
+      throw new Error('Request failed');
+    }
+
+    products = (await res.json()) || [];
+  } catch (error) {
+    throw 'An error has occurred';
+  }
 
   // duplicating products to make the carousel loop
   const carouselProducts = [...products, ...products];
