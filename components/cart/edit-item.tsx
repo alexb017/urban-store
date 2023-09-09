@@ -44,7 +44,10 @@ export default function EditItemQuantity({
   }
 
   return (
-    <button className="p-2" onClick={() => editItem(item)}>
+    <button
+      className="p-2 hover:scale-90 transition-all"
+      onClick={() => editItem(item)}
+    >
       {type === 'plus' ? (
         <PlusIcon className="w-4 h-4" />
       ) : (

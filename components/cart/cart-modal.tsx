@@ -46,9 +46,9 @@ export default function CartModal({ cart }: { cart: Cart }) {
       <button
         type="button"
         onClick={openCart}
-        className="relative flex text-neutral-500 p-2 border rounded border-neutral-300"
+        className="relative flex text-slate-500 p-2 border rounded border-slate-300 group"
       >
-        <CartIcon className="w-5 h-5" />
+        <CartIcon className="w-5 h-5 group-hover:scale-105 transition-transform" />
         {quantity > 0 && (
           <div className="absolute top-0 right-0 -mr-2 -mt-2 h-4 w-4 rounded text-[11px] font-medium text-white bg-blue-500">
             {quantity}
@@ -63,9 +63,9 @@ export default function CartModal({ cart }: { cart: Cart }) {
               <button
                 type="button"
                 onClick={closeCart}
-                className="flex text-neutral-500 p-2 border rounded border-neutral-300"
+                className="flex text-slate-500 p-2 border rounded border-slate-300"
               >
-                <CloseIcon className="h-5" />
+                <CloseIcon className="h-5 hover:scale-105 transition-all" />
               </button>
             </div>
             {arr.length === 0 ? (
@@ -80,7 +80,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
                     return (
                       <li
                         key={item.id}
-                        className="w-full flex flex-col border-b border-neutral-300"
+                        className="w-full flex flex-col border-b border-slate-300"
                       >
                         <div className="relative flex flex-row justify-between px-1 py-4">
                           <div className="absolute z-40 -mt-2 ml-[55px]">
@@ -90,7 +90,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
                             href={item.imgUrl}
                             className="flex flex-row space-x-4 overflow-hidden group"
                           >
-                            <div className="border rounded-md border-neutral-300">
+                            <div className="border rounded-md border-slate-300">
                               <Image
                                 className="h-full w-full object-cover group-hover:scale-105 transition-transform"
                                 src={item.image}
@@ -125,15 +125,15 @@ export default function CartModal({ cart }: { cart: Cart }) {
                   })}
                 </ul>
                 <div className="py-4 text-sm">
-                  <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                  <div className="flex items-center justify-between border-b border-slate-300 mb-3 pb-1">
                     <p>Taxes</p>
                     <p>$0.00 USD</p>
                   </div>
-                  <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                  <div className="flex items-center justify-between border-b border-slate-300 mb-3 pb-1">
                     <p>Shipping</p>
                     <p>Calculated at checkout</p>
                   </div>
-                  <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                  <div className="flex items-center justify-between border-b border-slate-300 mb-3 pb-1">
                     <p>Total</p>
                     <p>${totalPrice.toFixed(2)} USD</p>
                   </div>

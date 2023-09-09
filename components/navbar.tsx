@@ -8,17 +8,26 @@ export default function Navbar() {
     <nav className="p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center">
-            <LogoIcon className="w-6 h-6 mr-1" />
+          <Link href="/" className="flex items-center gap-1">
+            <LogoIcon className="w-6 h-6" />
             <div className="font-semibold uppercase">Urban Store</div>
           </Link>
-          <Link href="/search" className="text-sm">
+          <Link
+            href="/search"
+            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+          >
             All
           </Link>
-          <Link href="/search/shirts" className="text-sm">
+          <Link
+            href="/search/shirts"
+            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+          >
             Shirts
           </Link>
-          <Link href="/search/hoodies" className="text-sm">
+          <Link
+            href="/search/hoodies"
+            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+          >
             Hoodies
           </Link>
         </div>

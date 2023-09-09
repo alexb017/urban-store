@@ -24,14 +24,14 @@ export default function ProductDescription({ product }: { product: Product }) {
           ${product.price} USD
         </div>
       </div>
-      {product?.color?.length > 1 && (
+      {product?.color?.length > 0 && (
         <div>
           <h3 className="uppercase mb-1">color</h3>
           <div className="flex items-center gap-2">
             {product?.color?.map((color) => {
               const isActive = color === colorValue;
               const classname =
-                'text-sm border rounded-full py-1 px-2 bg-slate-200 hover:border-blue-500';
+                'text-sm border rounded-full py-1 px-2 bg-slate-200 hover:border-blue-500 hover:scale-105 transition-all';
               return (
                 <button
                   key={color}
@@ -50,14 +50,14 @@ export default function ProductDescription({ product }: { product: Product }) {
           </div>
         </div>
       )}
-      {product?.size?.length > 1 && (
+      {product?.size?.length > 0 && (
         <div className="my-6">
           <h3 className="uppercase mb-1">size</h3>
           <div className="flex items-center flex-wrap gap-2">
             {product?.size?.map((size) => {
               const isActive = size === sizeValue;
               const classname =
-                'text-sm uppercase border rounded-full py-1 px-4 bg-slate-200 hover:border-blue-500';
+                'text-sm uppercase border rounded-full py-1 px-4 bg-slate-200 hover:border-blue-500 hover:scale-105 transition-all';
               return (
                 <button
                   key={size}
