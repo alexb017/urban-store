@@ -13,7 +13,7 @@ export default function Collections() {
         <li>
           <Link
             href="/search"
-            className={`text-sm hover:text-black hover:scale-105 transition-all ${
+            className={`text-sm hover:text-black ${
               pathname === '/search'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
@@ -25,7 +25,7 @@ export default function Collections() {
         <li>
           <Link
             href="/search/shirts"
-            className={`text-sm hover:text-black hover:scale-105 transition-all ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/shirts'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
@@ -37,7 +37,7 @@ export default function Collections() {
         <li>
           <Link
             href="/search/headwear"
-            className={`text-sm hover:text-black hover:scale-105 transition-all ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/headwear'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
@@ -49,7 +49,7 @@ export default function Collections() {
         <li>
           <Link
             href="/search/drinkware"
-            className={`text-sm hover:text-black hover:scale-105 transition-all ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/drinkware'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
@@ -61,7 +61,7 @@ export default function Collections() {
         <li>
           <Link
             href="/search/bags"
-            className={`text-sm hover:text-black hover:scale-105 transition-all ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/bags'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
@@ -73,7 +73,7 @@ export default function Collections() {
         <li>
           <Link
             href="/search/shoes"
-            className={`text-sm hover:text-black hover:scale-105 transition-all ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/shoes'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
@@ -85,7 +85,7 @@ export default function Collections() {
         <li>
           <Link
             href="/search/hoodies"
-            className={`text-sm hover:text-black hover:scale-105 transition-all ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/hoodies'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'
@@ -97,7 +97,7 @@ export default function Collections() {
         <li>
           <Link
             href="/search/sweaters"
-            className={`text-sm hover:text-black hover:scale-105 transition-all ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/sweaters'
                 ? 'text-black border-b border-black'
                 : 'text-slate-500'

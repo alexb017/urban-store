@@ -8,6 +8,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import DeleteItem from './delete-item';
 import EditItemQuantity from './edit-item';
+import { loadStripe } from '@stripe/stripe-js';
+import { usePathname } from 'next/navigation';
+
+const stripeLoadedPromise = loadStripe(
+  'pk_test_51NoptQIF5Ewa0z1weAgAPPKYRio4rkIbNTYPuRPlXd3OdWsMaceCjCMNETTJSXp9yVsXpx6whtH8W4r0LGAIZ86L00YKiIUNvJ'
+);
 
 type Cart = {
   id: number;
@@ -22,6 +28,7 @@ type Cart = {
 
 export default function CartModal({ cart }: { cart: Cart }) {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   // convert object of objects to an array
   const arr: any[] = Object.entries(cart).map(([key, value]) => value);
@@ -39,6 +46,26 @@ export default function CartModal({ cart }: { cart: Cart }) {
 
   function closeCart() {
     setIsOpen(false);
+  }
+
+  async function handleCheckout() {
+    const stripe = await stripeLoadedPromise;
+    try {
+      const res = await stripe?.redirectToCheckout({
+        lineItems: [
+          {
+            price: 'price_1NoqkFIF5Ewa0z1w7Z8726pR',
+            quantity: 1,
+          },
+        ],
+        mode: 'payment',
+        successUrl: `${pathname}`,
+        cancelUrl: `${pathname}`,
+      });
+      console.log(res?.error);
+    } catch (error) {
+      throw 'Error wrong API key...';
+    }
   }
 
   return (
@@ -138,7 +165,10 @@ export default function CartModal({ cart }: { cart: Cart }) {
                     <p>${totalPrice.toFixed(2)} USD</p>
                   </div>
                 </div>
-                <button className="w-full rounded-full p-3 text-center font-medium text-sm text-white bg-blue-500">
+                <button
+                  onClick={handleCheckout}
+                  className="w-full rounded-full p-3 text-center font-medium text-sm text-white bg-blue-500"
+                >
                   Procced to Checkout
                 </button>
               </div>

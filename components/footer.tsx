@@ -8,7 +8,7 @@ export default function Footer() {
         <li>
           <Link
             href="/"
-            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-slate-500 transition-colors"
           >
             Home
           </Link>
@@ -16,7 +16,7 @@ export default function Footer() {
         <li>
           <Link
             href="/about"
-            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-slate-500 transition-colors"
           >
             About
           </Link>
@@ -24,7 +24,7 @@ export default function Footer() {
         <li>
           <Link
             href="/credits"
-            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-slate-500 transition-colors"
           >
             Credits
           </Link>

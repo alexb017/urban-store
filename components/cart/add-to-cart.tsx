@@ -13,23 +13,24 @@ export default function AddToCart({
 }) {
   const router = useRouter();
   const url = usePathname();
-  const randomId: number = Math.floor(Math.random() * 100) + 1;
-  const disabledWithOptions = color === '' || size === '';
-  const disabledWithoutOptions =
-    product?.color?.length >= 0 || product?.size?.length >= 0;
 
-  console.log(disabledWithOptions);
-  console.log(disabledWithoutOptions);
-  console.log(disabledWithOptions || disabledWithoutOptions);
+  const randomId: number = Math.floor(Math.random() * 1000);
+
+  const selectedValues = color === '' || size === '';
+  const defaultValue =
+    product?.color?.length === 0 || product?.size?.length === 0;
+
+  console.log(selectedValues);
+  console.log(defaultValue);
+  console.log(selectedValues || defaultValue);
+  console.log(!selectedValues || !defaultValue);
 
   return (
     <button
       type="button"
-      disabled={disabledWithOptions || disabledWithoutOptions}
+      disabled={selectedValues}
       className={`flex items-center justify-center gap-2 w-full p-4 mt-4 rounded-full bg-blue-500 text-white hover:opacity-90 ${
-        disabledWithOptions || disabledWithoutOptions
-          ? 'opacity-50 cursor-not-allowed'
-          : 'opacity-100'
+        selectedValues ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
       }`}
       onClick={async () => {
         try {
