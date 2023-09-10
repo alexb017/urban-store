@@ -49,7 +49,9 @@ export default function CartModal({ cart }: { cart: Cart }) {
   }
 
   async function handleCheckout() {
-    const stripe = await stripeLoadedPromise;
+    const stripe = await loadStripe(
+      'pk_test_51NoptQIF5Ewa0z1weAgAPPKYRio4rkIbNTYPuRPlXd3OdWsMaceCjCMNETTJSXp9yVsXpx6whtH8W4r0LGAIZ86L00YKiIUNvJ'
+    );
     try {
       const res = await stripe?.redirectToCheckout({
         lineItems: [
