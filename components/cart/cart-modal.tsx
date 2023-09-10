@@ -49,11 +49,9 @@ export default function CartModal({ cart }: { cart: Cart }) {
   }
 
   async function handleCheckout() {
-    const stripe = await loadStripe(
-      'pk_test_51NoptQIF5Ewa0z1weAgAPPKYRio4rkIbNTYPuRPlXd3OdWsMaceCjCMNETTJSXp9yVsXpx6whtH8W4r0LGAIZ86L00YKiIUNvJ'
-    );
+    const stripe = await stripeLoadedPromise;
     try {
-      const res = await stripe?.redirectToCheckout({
+      await stripe?.redirectToCheckout({
         lineItems: [
           {
             price: 'price_1NoqkFIF5Ewa0z1w7Z8726pR',
@@ -61,12 +59,11 @@ export default function CartModal({ cart }: { cart: Cart }) {
           },
         ],
         mode: 'payment',
-        successUrl: `${pathname}`,
-        cancelUrl: `${pathname}`,
+        successUrl: `https://urban-store-alexb017.vercel.app/`,
+        cancelUrl: `https://urban-store-alexb017.vercel.app/`,
       });
-      console.log(res?.error);
     } catch (error) {
-      throw 'Error wrong API key...';
+      console.error(error);
     }
   }
 
