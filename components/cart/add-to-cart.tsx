@@ -50,6 +50,7 @@ export default function AddToCart({
                 image: product.images[0],
                 imgUrl: url,
                 quantity: 1,
+                priceId: product.priceId,
               }),
             }
           );

@@ -24,6 +24,7 @@ type Cart = {
   size: string;
   imgUrl: string;
   quantity: number;
+  priceId: string;
 };
 
 export default function CartModal({ cart }: { cart: Cart }) {
@@ -32,6 +33,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
 
   // convert object of objects to an array
   const arr: any[] = Object.entries(cart).map(([key, value]) => value);
+  console.log(arr);
 
   const quantity = arr.reduce((total, product) => total + product.quantity, 0);
   const totalPrice = arr.reduce(
@@ -50,14 +52,14 @@ export default function CartModal({ cart }: { cart: Cart }) {
 
   async function handleCheckout() {
     const stripe = await stripeLoadedPromise;
+
+    const lineItems = arr.map((item) => {
+      return { price: item.priceId, quantity: item.quantity };
+    });
+
     try {
       await stripe?.redirectToCheckout({
-        lineItems: [
-          {
-            price: 'price_1NoqkFIF5Ewa0z1w7Z8726pR',
-            quantity: 1,
-          },
-        ],
+        lineItems: lineItems,
         mode: 'payment',
         successUrl: `https://urban-store-alexb017.vercel.app/`,
         cancelUrl: `https://urban-store-alexb017.vercel.app/`,
