@@ -9,8 +9,7 @@ export default async function CategoryPage({
 
   try {
     const res = await fetch(
-      'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json',
-      { cache: 'no-store' }
+      'https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/products.json'
     );
 
     if (!res.ok) {

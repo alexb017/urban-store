@@ -16,22 +16,10 @@ export default function AddToCart({
 
   const randomId: number = Math.floor(Math.random() * 1000);
 
-  const selectedValues = color === '' || size === '';
-  const defaultValue =
-    product?.color?.length === 0 || product?.size?.length === 0;
-
-  console.log(selectedValues);
-  console.log(defaultValue);
-  console.log(selectedValues || defaultValue);
-  console.log(!selectedValues || !defaultValue);
-
   return (
     <button
       type="button"
-      disabled={selectedValues}
-      className={`flex items-center justify-center gap-2 w-full p-4 mt-4 rounded-full bg-blue-500 text-white hover:opacity-90 ${
-        selectedValues ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
-      }`}
+      className="flex items-center justify-center gap-2 w-full p-4 mt-4 rounded-full bg-blue-500 text-white hover:opacity-90"
       onClick={async () => {
         try {
           const res = await fetch(
