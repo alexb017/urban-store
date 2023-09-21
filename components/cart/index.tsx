@@ -18,8 +18,5 @@ export default async function Cart() {
     throw 'An error has occurred';
   }
 
-  // convert object of objects to an array
-  const arr: any = Object.entries(data).map(([key, value]) => value);
-
-  return <CartModal cart={arr} />;
+  return <CartModal cart={data} />;
 }

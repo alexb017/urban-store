@@ -26,25 +26,28 @@ type Cart = {
   priceId: string;
 };
 
-export default function CartModal({ cart }: { cart: any[] }) {
+export default function CartModal({ cart }: { cart: Cart }) {
   const [isOpen, setIsOpen] = useState(false);
-  const refModal = useRef(cart.length);
+  //const refModal = useRef(cart.length);
 
-  useEffect(() => {
-    // Open cart modal when quantity changes
-    if (cart.length !== refModal.current) {
-      // But only if it's not already open
-      if (!isOpen) {
-        setIsOpen(true);
-      }
+  // useEffect(() => {
+  //   // Open cart modal when quantity changes
+  //   if (cart.length !== refModal.current) {
+  //     // But only if it's not already open
+  //     if (!isOpen) {
+  //       setIsOpen(true);
+  //     }
 
-      // Always update the quantity reference
-      refModal.current = cart.length;
-    }
-  }, [cart, refModal, isOpen]);
+  //     // Always update the quantity reference
+  //     refModal.current = cart.length;
+  //   }
+  // }, [cart, refModal, isOpen]);
 
-  const quantity = cart.reduce((total, product) => total + product.quantity, 0);
-  const totalPrice = cart.reduce(
+  // convert object of objects to an array
+  const arr: any[] = Object.entries(cart).map(([key, value]) => value);
+
+  const quantity = arr.reduce((total, product) => total + product.quantity, 0);
+  const totalPrice = arr.reduce(
     (total, product) =>
       total + Number.parseInt(product.price, 10) * product.quantity,
     0
@@ -61,7 +64,7 @@ export default function CartModal({ cart }: { cart: any[] }) {
   async function handleCheckout() {
     const stripe = await stripeLoadedPromise;
 
-    const lineItems = cart.map((item) => {
+    const lineItems = arr.map((item) => {
       return { price: item.priceId, quantity: item.quantity };
     });
 
@@ -124,7 +127,7 @@ export default function CartModal({ cart }: { cart: any[] }) {
                   <CloseIcon className="h-5 hover:scale-105 transition-all" />
                 </button>
               </div>
-              {cart.length === 0 ? (
+              {arr.length === 0 ? (
                 <div className="mt-20 w-full flex flex-col items-center justify-center">
                   <CartIcon className="h-16 " />
                   <p className="mt-6 text-2xl font-bold">Your cart is empty.</p>
@@ -132,7 +135,7 @@ export default function CartModal({ cart }: { cart: any[] }) {
               ) : (
                 <div className="h-full flex flex-col justify-between overflow-hidden p-1">
                   <ul className="flex-grow py-4 overflow-auto">
-                    {cart.map((item) => {
+                    {arr.map((item) => {
                       return (
                         <li
                           key={item.id}
