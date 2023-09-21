@@ -15,27 +15,25 @@ export default function AddToCart({
   const url = usePathname();
   const randomId: number = Math.floor(Math.random() * 1000);
 
-  let defaultVariant = color === '' || size === '';
+  // let defaultVariant = color === '' || size === '';
 
-  if (product?.color === undefined && product?.size === undefined) {
-    defaultVariant = false;
-  }
+  // if (product?.color === undefined && product?.size === undefined) {
+  //   defaultVariant = false;
+  // }
 
-  if (product?.color === undefined && size !== '') {
-    defaultVariant = false;
-  }
+  // if (product?.color === undefined && size !== '') {
+  //   defaultVariant = false;
+  // }
 
-  if (color !== '' && product?.size === undefined) {
-    defaultVariant = false;
-  }
+  // if (color !== '' && product?.size === undefined) {
+  //   defaultVariant = false;
+  // }
 
   return (
     <button
-      disabled={defaultVariant}
+      disabled={false}
       className={`flex items-center justify-center gap-2 w-full p-4 mt-4 rounded-full bg-blue-500 text-white hover:opacity-90 ${
-        defaultVariant
-          ? 'opacity-50 cursor-not-allowed'
-          : 'opacity-100 cursor-pointer'
+        false ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer'
       }`}
       onClick={async () => {
         try {
