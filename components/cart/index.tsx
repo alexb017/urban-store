@@ -19,9 +19,7 @@ export default async function Cart() {
   }
 
   // convert object of objects to an array
-  const arr: any = Object.entries(data).map(([key, value]) => {
-    return { ...(value as any), unique_id: key };
-  });
+  const arr: any = Object.entries(data).map(([key, value]) => value);
 
   return <CartModal cart={arr} />;
 }

@@ -40,9 +40,9 @@ export default function AddToCart({
       onClick={async () => {
         try {
           const res = await fetch(
-            `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart.json`,
+            `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/id${randomId}.json`,
             {
-              method: 'POST',
+              method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
               },

@@ -9,7 +9,7 @@ export default function DeleteItem({ id }: { id: string }) {
   async function deleteItem(id: string) {
     try {
       const res = await fetch(
-        `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/${id}.json`,
+        `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/id${id}.json`,
         {
           method: 'DELETE',
         }

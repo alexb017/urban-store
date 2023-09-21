@@ -140,7 +140,7 @@ export default function CartModal({ cart }: { cart: any[] }) {
                         >
                           <div className="relative flex flex-row justify-between px-1 py-4">
                             <div className="absolute z-40 -mt-2 ml-[55px]">
-                              <DeleteItem id={item.unique_id} />
+                              <DeleteItem id={item.id} />
                             </div>
                             <Link
                               href={item.imgUrl}
