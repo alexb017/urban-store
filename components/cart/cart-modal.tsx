@@ -41,7 +41,6 @@ export default function CartModal({ cart }: { cart: any[] }) {
       // Always update the quantity reference
       refModal.current = cart.length;
     }
-    console.log(cart);
   }, [cart, refModal, isOpen]);
 
   const quantity = cart.reduce((total, product) => total + product.quantity, 0);
