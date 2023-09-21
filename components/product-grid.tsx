@@ -16,7 +16,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
         return (
           <Link
             key={product.id}
-            className="relative block aspect-square w-full h-full bg-slate-100 overflow-hidden group"
+            className="relative block aspect-square rounded-lg border-neutral-200 w-full h-full bg-neutral-100 overflow-hidden group dark:bg-black dark:border-neutral-800"
             href={`/product/${product.id}`}
           >
             <Image
@@ -26,7 +26,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
               sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
               className="group-hover:scale-105 transition-transform"
             />
-            <div className="flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-slate-100 bg-opacity-30">
+            <div className="flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-black dark:border-neutral-700">
               <div className="text-xs">{product.name}</div>
               <div className="text-xs text-center rounded-full py-1 px-2 text-white bg-blue-500">
                 ${product.price} USD

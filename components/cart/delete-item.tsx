@@ -26,7 +26,7 @@ export default function DeleteItem({ id }: { id: string }) {
   }
   return (
     <button onClick={() => deleteItem(id)}>
-      <CloseIcon className="h-4 bg-neutral-200 p-0.5 rounded-full" />
+      <CloseIcon className="h-4 bg-neutral-300 p-0.5 rounded-full dark:bg-neutral-700" />
     </button>
   );
 }

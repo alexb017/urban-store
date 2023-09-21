@@ -44,7 +44,7 @@ export default function Gallery({ images }: { images: { src: string }[] }) {
                       className={
                         isActive
                           ? `${classname} border-2 border-blue-500`
-                          : `${classname} border-slate-200`
+                          : `${classname} border-neutral-200 dark:border-neutral-700`
                       }
                       width={80}
                       height={80}

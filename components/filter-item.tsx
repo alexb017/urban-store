@@ -9,7 +9,7 @@ export default function FilterItem() {
 
   return (
     <>
-      <h3 className="text-xs text-slate-500 font-bold">Sort by</h3>
+      <h3 className="text-xs text-neutral-500 font-bold">Sort by</h3>
       <ul>
         <li>
           <Link
@@ -17,7 +17,7 @@ export default function FilterItem() {
             className={`text-sm hover:text-black ${
               pathname === '/search' && searchParams.get('sort') === null
                 ? 'text-black border-b border-black'
-                : 'text-slate-500'
+                : 'text-neutral-500'
             }`}
           >
             Relevance
@@ -29,7 +29,7 @@ export default function FilterItem() {
             className={`text-sm hover:text-black ${
               searchParams.get('sort') === 'toLowHigh'
                 ? 'text-black border-b border-black'
-                : 'text-slate-500'
+                : 'text-neutral-500'
             }`}
           >
             Price: Low to high
@@ -41,7 +41,7 @@ export default function FilterItem() {
             className={`text-sm hover:text-black ${
               searchParams.get('sort') === 'toHighLow'
                 ? 'text-black border-b border-black'
-                : 'text-slate-500'
+                : 'text-neutral-500'
             }`}
           >
             Price: high to low

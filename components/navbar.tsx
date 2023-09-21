@@ -14,19 +14,19 @@ export default function Navbar() {
           </Link>
           <Link
             href="/search"
-            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-neutral-500 hover:scale-105 transition-all dark:hover:text-neutral-300"
           >
             All
           </Link>
           <Link
             href="/search/shirts"
-            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-neutral-500 hover:scale-105 transition-all dark:hover:text-neutral-300"
           >
             Shirts
           </Link>
           <Link
             href="/search/hoodies"
-            className="text-sm hover:text-slate-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-neutral-500 hover:scale-105 transition-all dark:hover:text-neutral-300"
           >
             Hoodies
           </Link>
