@@ -16,16 +16,16 @@ export default function EditItemQuantity({
   async function editItem(item: any) {
     const quantity =
       type === 'plus'
-        ? { ...item, quantity: item.quantity + 1 }
-        : { ...item, quantity: item.quantity - 1 };
+        ? { quantity: item.quantity + 1 }
+        : { quantity: item.quantity - 1 };
 
     if (item.quantity === 1 && type === 'minus') return;
 
     try {
       const res = await fetch(
-        `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/id${item.id}.json`,
+        `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/${item.unique_id}.json`,
         {
-          method: 'PUT',
+          method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
           },

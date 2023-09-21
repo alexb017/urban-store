@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import CartIcon from '../icons/cart';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect, useRef } from 'react';
 import CloseIcon from '../icons/close';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -26,14 +26,26 @@ type Cart = {
   priceId: string;
 };
 
-export default function CartModal({ cart }: { cart: Cart }) {
+export default function CartModal({ cart }: { cart: any[] }) {
   const [isOpen, setIsOpen] = useState(false);
+  const refModal = useRef(cart.length);
 
-  // convert object of objects to an array
-  const arr: any[] = Object.entries(cart).map(([key, value]) => value);
+  useEffect(() => {
+    // Open cart modal when quantity changes
+    if (cart.length !== refModal.current) {
+      // But only if it's not already open
+      if (!isOpen) {
+        setIsOpen(true);
+      }
 
-  const quantity = arr.reduce((total, product) => total + product.quantity, 0);
-  const totalPrice = arr.reduce(
+      // Always update the quantity reference
+      refModal.current = cart.length;
+    }
+    console.log(cart);
+  }, [cart, refModal, isOpen]);
+
+  const quantity = cart.reduce((total, product) => total + product.quantity, 0);
+  const totalPrice = cart.reduce(
     (total, product) =>
       total + Number.parseInt(product.price, 10) * product.quantity,
     0
@@ -50,7 +62,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
   async function handleCheckout() {
     const stripe = await stripeLoadedPromise;
 
-    const lineItems = arr.map((item) => {
+    const lineItems = cart.map((item) => {
       return { price: item.priceId, quantity: item.quantity };
     });
 
@@ -113,7 +125,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
                   <CloseIcon className="h-5 hover:scale-105 transition-all" />
                 </button>
               </div>
-              {arr.length === 0 ? (
+              {cart.length === 0 ? (
                 <div className="mt-20 w-full flex flex-col items-center justify-center">
                   <CartIcon className="h-16 " />
                   <p className="mt-6 text-2xl font-bold">Your cart is empty.</p>
@@ -121,7 +133,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
               ) : (
                 <div className="h-full flex flex-col justify-between overflow-hidden p-1">
                   <ul className="flex-grow py-4 overflow-auto">
-                    {arr.map((item) => {
+                    {cart.map((item) => {
                       return (
                         <li
                           key={item.id}
@@ -129,15 +141,15 @@ export default function CartModal({ cart }: { cart: Cart }) {
                         >
                           <div className="relative flex flex-row justify-between px-1 py-4">
                             <div className="absolute z-40 -mt-2 ml-[55px]">
-                              <DeleteItem id={item.id} />
+                              <DeleteItem id={item.unique_id} />
                             </div>
                             <Link
                               href={item.imgUrl}
                               className="flex flex-row space-x-4 overflow-hidden group"
                             >
-                              <div className="border rounded-md border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900">
+                              <div className="border rounded-md border-neutral-300 bg-neutral-300 group-hover:bg-neutral-950 transition-colors dark:border-neutral-700 dark:bg-neutral-900">
                                 <Image
-                                  className="h-full w-full object-cover group-hover:scale-105 transition-transform"
+                                  className="h-full w-full object-cover"
                                   src={item.image}
                                   alt={item.name}
                                   width={64}

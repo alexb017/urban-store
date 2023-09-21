@@ -9,7 +9,7 @@ export default function DeleteItem({ id }: { id: string }) {
   async function deleteItem(id: string) {
     try {
       const res = await fetch(
-        `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/id${id}.json`,
+        `https://urban-store-2da52-default-rtdb.europe-west1.firebasedatabase.app/productsCart/${id}.json`,
         {
           method: 'DELETE',
         }
@@ -24,6 +24,7 @@ export default function DeleteItem({ id }: { id: string }) {
 
     router.refresh();
   }
+
   return (
     <button onClick={() => deleteItem(id)}>
       <CloseIcon className="h-4 bg-neutral-300 p-0.5 rounded-full dark:bg-neutral-700" />
