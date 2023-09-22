@@ -35,6 +35,7 @@ function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
               : '(min-width: 768px) 33vw, 100vw'
           }
           className="group-hover:scale-105 transition-transform"
+          priority={true}
         />
         <div className={size === 'full' ? classFullPrice : classHalfPrice}>
           <div className="text-xs">{item.name}</div>
