@@ -31,10 +31,8 @@ export default function AddToCart({
 
   return (
     <button
-      disabled={false}
-      className={`flex items-center justify-center gap-2 w-full p-4 mt-4 rounded-full bg-blue-500 text-white hover:opacity-90 ${
-        false ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer'
-      }`}
+      type="button"
+      className="flex items-center justify-center gap-2 w-full p-4 mt-4 rounded-full bg-blue-500 text-white hover:opacity-90"
       onClick={async () => {
         try {
           const res = await fetch(
