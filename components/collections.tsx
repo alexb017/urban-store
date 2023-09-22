@@ -8,17 +8,15 @@ export default function Collections() {
 
   return (
     <>
-      <h3 className="text-xs text-neutral-500 font-bold dark:text-neutral-100">
-        Collections
-      </h3>
+      <h3 className="text-xs text-neutral-500 font-bold">Collections</h3>
       <ul>
         <li>
           <Link
             href="/search"
-            className={`text-sm hover:text-black dark:hover:text-neutral-100 ${
+            className={`text-sm hover:text-black ${
               pathname === '/search'
-                ? 'text-black border-b border-black dark:text-neutral-100 dark:border-neutral-300'
-                : 'text-neutral-500 dark:text-neutral-300'
+                ? 'text-black border-b border-black'
+                : 'text-neutral-500'
             }`}
           >
             All
@@ -27,10 +25,10 @@ export default function Collections() {
         <li>
           <Link
             href="/search/shirts"
-            className={`text-sm hover:text-black dark:hover:text-neutral-100 ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/shirts'
-                ? 'text-black border-b border-black dark:text-neutral-100 dark:border-neutral-300'
-                : 'text-neutral-500 dark:text-neutral-300'
+                ? 'text-black border-b border-black'
+                : 'text-neutral-500'
             }`}
           >
             Shirts
@@ -39,10 +37,10 @@ export default function Collections() {
         <li>
           <Link
             href="/search/headwear"
-            className={`text-sm hover:text-black dark:hover:text-neutral-100 ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/headwear'
-                ? 'text-black border-b border-black dark:text-neutral-100 dark:border-neutral-300'
-                : 'text-neutral-500 dark:text-neutral-300'
+                ? 'text-black border-b border-black'
+                : 'text-neutral-500'
             }`}
           >
             Headwear
@@ -51,10 +49,10 @@ export default function Collections() {
         <li>
           <Link
             href="/search/drinkware"
-            className={`text-sm hover:text-black dark:hover:text-neutral-100 ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/drinkware'
-                ? 'text-black border-b border-black dark:text-neutral-100 dark:border-neutral-300'
-                : 'text-neutral-500 dark:text-neutral-300'
+                ? 'text-black border-b border-black'
+                : 'text-neutral-500'
             }`}
           >
             Drinkware
@@ -63,10 +61,10 @@ export default function Collections() {
         <li>
           <Link
             href="/search/bags"
-            className={`text-sm hover:text-black dark:hover:text-neutral-100 ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/bags'
-                ? 'text-black border-b border-black dark:text-neutral-100 dark:border-neutral-300'
-                : 'text-neutral-500 dark:text-neutral-300'
+                ? 'text-black border-b border-black'
+                : 'text-neutral-500'
             }`}
           >
             Bags
@@ -75,10 +73,10 @@ export default function Collections() {
         <li>
           <Link
             href="/search/shoes"
-            className={`text-sm hover:text-black dark:hover:text-neutral-100 ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/shoes'
-                ? 'text-black border-b border-black dark:text-neutral-100 dark:border-neutral-300'
-                : 'text-neutral-500 dark:text-neutral-300'
+                ? 'text-black border-b border-black'
+                : 'text-neutral-500'
             }`}
           >
             Shoes
@@ -87,10 +85,10 @@ export default function Collections() {
         <li>
           <Link
             href="/search/hoodies"
-            className={`text-sm hover:text-black dark:hover:text-neutral-100 ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/hoodies'
-                ? 'text-black border-b border-black dark:text-neutral-100 dark:border-neutral-300'
-                : 'text-neutral-500 dark:text-neutral-300'
+                ? 'text-black border-b border-black'
+                : 'text-neutral-500'
             }`}
           >
             Hoodies
@@ -99,10 +97,10 @@ export default function Collections() {
         <li>
           <Link
             href="/search/sweaters"
-            className={`text-sm hover:text-black dark:hover:text-neutral-100 ${
+            className={`text-sm hover:text-black ${
               pathname === '/search/sweaters'
-                ? 'text-black border-b border-black dark:text-neutral-100 dark:border-neutral-300'
-                : 'text-neutral-500 dark:text-neutral-300'
+                ? 'text-black border-b border-black'
+                : 'text-neutral-500'
             }`}
           >
             Sweaters
