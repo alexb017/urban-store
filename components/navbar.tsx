@@ -2,6 +2,7 @@ import Link from 'next/link';
 import LogoIcon from './icons/logo';
 import Search from './search';
 import Cart from './cart/index';
+import DarkTheme from './dark-theme';
 
 export default function Navbar() {
   return (
@@ -14,19 +15,19 @@ export default function Navbar() {
           </Link>
           <Link
             href="/search"
-            className="text-sm hover:text-neutral-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-neutral-500 transition-colors dark:hover:text-neutral-300"
           >
             All
           </Link>
           <Link
             href="/search/shirts"
-            className="text-sm hover:text-neutral-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-neutral-500 transition-colors dark:hover:text-neutral-300"
           >
             Shirts
           </Link>
           <Link
             href="/search/hoodies"
-            className="text-sm hover:text-neutral-500 hover:scale-105 transition-all"
+            className="text-sm hover:text-neutral-500 transition-colors dark:hover:text-neutral-300"
           >
             Hoodies
           </Link>
@@ -34,7 +35,8 @@ export default function Navbar() {
         {/* <div className="flex">
           <Search />
         </div> */}
-        <div className="flex">
+        <div className="flex items-center gap-6">
+          <DarkTheme />
           <Cart />
         </div>
       </div>

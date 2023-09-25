@@ -83,7 +83,7 @@ export default function CartModal({ cart }: { cart: Cart[] }) {
       <button
         type="button"
         onClick={openCart}
-        className="relative flex text-neutral-500 p-2 border rounded border-neutral-300 group"
+        className="relative flex text-neutral-500 p-2 border rounded border-neutral-200 group dark:border-neutral-700 dark:text-neutral-200"
       >
         <CartIcon className="w-5 h-5 group-hover:scale-105 transition-transform" />
         {quantity > 0 && (
@@ -114,13 +114,13 @@ export default function CartModal({ cart }: { cart: Cart[] }) {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed top-0 right-0 bottom-0 flex flex-col w-full h-full border-1 border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px]">
+            <Dialog.Panel className="fixed top-0 right-0 bottom-0 flex flex-col w-full h-full bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px] dark:text-neutral-200 dark:bg-black/80">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-bold">My Cart</h3>
                 <button
                   type="button"
                   onClick={closeCart}
-                  className="flex text-neutral-500 p-2 border rounded border-neutral-300"
+                  className="flex text-neutral-500 p-2 border rounded border-neutral-200 dark:text-neutral-200 dark:border-neutral-700"
                 >
                   <CloseIcon className="h-5 hover:scale-105 transition-all" />
                 </button>
@@ -137,7 +137,7 @@ export default function CartModal({ cart }: { cart: Cart[] }) {
                       return (
                         <li
                           key={item.id}
-                          className="w-full flex flex-col border-b border-neutral-300"
+                          className="w-full flex flex-col border-b border-neutral-200 dark:border-neutral-700"
                         >
                           <div className="relative flex flex-row justify-between px-1 py-4">
                             <div className="absolute z-40 -mt-2 ml-[55px]">
@@ -147,7 +147,7 @@ export default function CartModal({ cart }: { cart: Cart[] }) {
                               href={item.imgUrl}
                               className="flex flex-row space-x-4 overflow-hidden group"
                             >
-                              <div className="border rounded-md border-neutral-300 bg-neutral-200">
+                              <div className="border rounded-md border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-950">
                                 <Image
                                   className="h-full w-full object-cover group-hover:scale-105 transition-transform"
                                   src={item.image}
@@ -170,7 +170,7 @@ export default function CartModal({ cart }: { cart: Cart[] }) {
                             </Link>
                             <div className="flex flex-col items-end justify-center">
                               <p className="text-sm">${item.price} USD</p>
-                              <div className="flex items-center border rounded-full mt-1 border-neutral-200">
+                              <div className="flex items-center border rounded-full mt-1 border-neutral-200 dark:border-neutral-700">
                                 <EditItemQuantity item={item} type="minus" />
                                 <p className="text-sm px-1">{item.quantity}</p>
                                 <EditItemQuantity item={item} type="plus" />
@@ -182,15 +182,15 @@ export default function CartModal({ cart }: { cart: Cart[] }) {
                     })}
                   </ul>
                   <div className="py-4 text-sm">
-                    <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                    <div className="flex items-center justify-between border-b border-neutral-200 mb-3 pb-1 dark:border-neutral-700">
                       <p>Taxes</p>
                       <p>$0.00 USD</p>
                     </div>
-                    <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                    <div className="flex items-center justify-between border-b border-neutral-200 mb-3 pb-1 dark:border-neutral-700">
                       <p>Shipping</p>
                       <p>Calculated at checkout</p>
                     </div>
-                    <div className="flex items-center justify-between border-b border-neutral-300 mb-3 pb-1">
+                    <div className="flex items-center justify-between border-b border-neutral-200 mb-3 pb-1 dark:border-neutral-700">
                       <p>Total</p>
                       <p>${totalPrice.toFixed(2)} USD</p>
                     </div>

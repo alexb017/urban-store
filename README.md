@@ -1,6 +1,6 @@
 # Urban Store
 
-Build an ecommerce with Stripe Checkout
+Build an ecommerce with Stripe Checkout, based on Next.js template.
 
 ![Alt text](/public/Urban-Store.png)
 ![Alt text](/public/Urban-Store-Details.png)
@@ -8,7 +8,8 @@ Build an ecommerce with Stripe Checkout
 
 ### Features
 
+- Integration with Stripe Checkout
 - Fetch products from Firebase API
 - Styling with Tailwind CSS
-- Checkout with Stripe
 - Automatic light/dark mode based on system settings
+- Responsive UI

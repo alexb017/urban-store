@@ -10,9 +10,9 @@ type Product = {
 
 function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
   const classFullPrice =
-    'flex items-center gap-2 absolute backdrop-blur bottom-48 left-28 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30';
+    'flex items-center gap-2 absolute backdrop-blur bottom-48 left-28 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700';
   const classHalfPrice =
-    'flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30';
+    'flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700';
   return (
     <div
       className={
@@ -22,7 +22,7 @@ function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
       }
     >
       <Link
-        className="relative block aspect-square rounded-lg border-neutral-200 w-full h-full bg-neutral-100 overflow-hidden group"
+        className="relative block aspect-square border rounded-lg border-neutral-200 w-full h-full bg-neutral-100 overflow-hidden group dark:border-neutral-700 dark:bg-neutral-900"
         href={`/product/${item.id}`}
       >
         <Image

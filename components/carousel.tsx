@@ -38,7 +38,7 @@ export default async function Carousel() {
             className="aspect-ratio w-full flex-none min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
           >
             <Link
-              className="relative block aspect-square rounded-lg border-neutral-200 w-full h-full bg-neutral-100 overflow-hidden group"
+              className="relative block aspect-square border rounded-lg border-neutral-200 w-full h-full bg-neutral-100 overflow-hidden group dark:border-neutral-700 dark:bg-neutral-900"
               href={`/product/${product.id}`}
             >
               <Image
@@ -48,7 +48,7 @@ export default async function Carousel() {
                 sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                 className="group-hover:scale-105 transition-transform"
               />
-              <div className="flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30">
+              <div className="flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700">
                 <div className="text-xs">{product.name}</div>
                 <div className="text-xs text-center rounded-full py-1 px-2 text-white bg-blue-500">
                   ${product.price} USD
