@@ -31,7 +31,7 @@ export default function ProductDescription({ product }: { product: Product }) {
             {product?.color?.map((color) => {
               const isActive = color === colorValue;
               const classname =
-                'text-sm border rounded-full py-1 px-2 bg-neutral-200 hover:border-blue-500 hover:scale-105 transition-all dark:bg-neutral-800 dark:border-neutral-700';
+                'text-sm border rounded-full py-1 px-2 bg-neutral-200 hover:border-blue-500 hover:scale-105 transition-all dark:bg-neutral-800';
               return (
                 <button
                   key={color}
@@ -39,7 +39,7 @@ export default function ProductDescription({ product }: { product: Product }) {
                   className={
                     isActive
                       ? `${classname} border-2 border-blue-500`
-                      : `${classname} border-neutral-200 dark:border-neutral-700`
+                      : `${classname} border-neutral-300 dark:border-neutral-700`
                   }
                   onClick={() => setColorValue(color)}
                 >
@@ -57,7 +57,7 @@ export default function ProductDescription({ product }: { product: Product }) {
             {product?.size?.map((size) => {
               const isActive = size === sizeValue;
               const classname =
-                'text-sm uppercase border rounded-full py-1 px-4 bg-neutral-200 hover:border-blue-500 hover:scale-105 transition-all dark:bg-neutral-800 dark:border-neutral-700';
+                'text-sm uppercase border rounded-full py-1 px-4 bg-neutral-200 hover:border-blue-500 hover:scale-105 transition-all dark:bg-neutral-800';
               return (
                 <button
                   key={size}
@@ -65,7 +65,7 @@ export default function ProductDescription({ product }: { product: Product }) {
                   className={
                     isActive
                       ? `${classname} border-2 border-blue-500`
-                      : `${classname} border-neutral-200 dark:border-neutral-700`
+                      : `${classname} border-neutral-300 dark:border-neutral-700`
                   }
                   onClick={() => setSizeValue(size)}
                 >

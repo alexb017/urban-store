@@ -32,12 +32,11 @@ export default function Navbar() {
             Hoodies
           </Link>
         </div>
-        {/* <div className="flex">
-          <Search />
-        </div> */}
         <div className="flex items-center gap-6">
           <DarkTheme />
-          <Cart />
+          <div>
+            <Cart />
+          </div>
         </div>
       </div>
     </nav>

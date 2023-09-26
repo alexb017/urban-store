@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} dark:text-white dark:bg-neutral-950`}
+        className={`${inter.className} text-black bg-white dark:text-white dark:bg-neutral-950`}
       >
         <Navbar />
         <main className="w-full">{children}</main>
