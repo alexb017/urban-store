@@ -3,32 +3,35 @@
 import { useState, useEffect } from 'react';
 
 export default function DarkTheme() {
-  const [isDarkTheme, setIsDarkTheme] = useState(() => {
-    if (window.localStorage) {
-      return localStorage.getItem('isDarkTheme');
-    }
-  });
+  const [isDarkTheme, setIsDarkTheme] = useState('light');
 
   useEffect(() => {
-    localStorage.setItem('isDarkTheme', isDarkTheme as string);
+    const theme = localStorage.getItem('isDarkTheme');
 
-    if (isDarkTheme === 'dark') {
+    if (theme === 'dark') {
       document.documentElement.classList.add('dark');
       document.documentElement.style.colorScheme = 'dark';
     } else {
       document.documentElement.classList.remove('dark');
       document.documentElement.style.colorScheme = 'light';
     }
+
+    setIsDarkTheme(theme as string);
   }, [isDarkTheme]);
+
+  function handleDarkTheme(theme: string) {
+    setIsDarkTheme(theme);
+    localStorage.setItem('isDarkTheme', theme);
+  }
 
   return (
     <div className="flex items-center border rounded-full border-neutral-200 p-1 dark:border-neutral-700">
       <button
         type="button"
-        className={`flex items-center rounded-full p-1 text-neutral-700 hover:text-neutral-700 dark:hover:text-neutral-200 dark:text-neutral-500 ${
-          isDarkTheme === 'light' ? 'bg-neutral-200' : ''
+        className={`flex items-center rounded-full p-1 text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-200 dark:text-neutral-500 ${
+          isDarkTheme === 'light' ? 'bg-neutral-200' : null
         }`}
-        onClick={() => setIsDarkTheme('light')}
+        onClick={() => handleDarkTheme('light')}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -44,12 +47,7 @@ export default function DarkTheme() {
       </button>
       {/* <button
         type="button"
-        className={`flex items-center rounded-full p-1 hover:text-neutral-200 dark:hover:text-neutral-200 ${
-          isDarkTheme === 'dark' &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'bg-neutral-200 dark:bg-neutral-700'
-            : 'dark:text-neutral-500'
-        }`}
+        className={`flex items-center rounded-full p-1 text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-200`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -65,10 +63,10 @@ export default function DarkTheme() {
       </button> */}
       <button
         type="button"
-        className={`flex items-center rounded-full p-1 text-neutral-500 hover:text-neutral-400 dark:hover:text-neutral-200 dark:text-neutral-200 ${
-          isDarkTheme === 'dark' ? 'bg-neutral-700' : ''
+        className={`flex items-center rounded-full p-1 text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-200 dark:text-neutral-200 ${
+          isDarkTheme === 'dark' ? 'bg-neutral-700' : null
         }`}
-        onClick={() => setIsDarkTheme('dark')}
+        onClick={() => handleDarkTheme('dark')}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
