@@ -93,7 +93,7 @@ export default function CartModal({ cart }: { cart: Cart[] }) {
         )}
       </button>
       <Transition show={isOpen}>
-        <Dialog onClose={closeCart}>
+        <Dialog onClose={closeCart} className="relative z-10">
           <Transition.Child
             as={Fragment}
             enter="transition-all ease-in-out duration-300"

@@ -3,12 +3,20 @@ import LogoIcon from './icons/logo';
 import Search from './search';
 import Cart from './cart/index';
 import DarkTheme from './dark-theme';
+import MobileMenu from './mobile-menu';
 
 export default function Navbar() {
   return (
     <nav className="p-4">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6">
+        <div className="md:hidden">
+          <MobileMenu />
+        </div>
+        <Link href="/" className="flex items-center gap-1 md:hidden">
+          <LogoIcon className="w-6 h-6" />
+          <div className="font-semibold uppercase">Urban Store</div>
+        </Link>
+        <div className="hidden md:flex items-center gap-6">
           <Link href="/" className="flex items-center gap-1">
             <LogoIcon className="w-6 h-6" />
             <div className="font-semibold uppercase">Urban Store</div>
@@ -33,7 +41,9 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="flex items-center gap-6">
-          <DarkTheme />
+          <div className="hidden md:flex">
+            <DarkTheme />
+          </div>
           <div>
             <Cart />
           </div>

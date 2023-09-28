@@ -90,7 +90,7 @@ async function RelatedProducts({ id }: { id: string }) {
                 sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
                 className="group-hover:scale-105 transition-transform"
               />
-              <div className="flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700">
+              <div className="flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full border-neutral-300 py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700">
                 <div className="text-xs">{product.name}</div>
                 <div className="text-xs text-center rounded-full py-1 px-2 text-white bg-blue-500">
                   ${product.price} USD

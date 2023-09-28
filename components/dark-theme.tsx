@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react';
 
 export default function DarkTheme() {
-  const [isDarkTheme, setIsDarkTheme] = useState('light');
+  const [isDarkTheme, setIsDarkTheme] = useState('');
 
   useEffect(() => {
-    const theme = localStorage.getItem('isDarkTheme');
+    const theme = localStorage.getItem('isDarkTheme') || 'light';
 
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -25,7 +25,7 @@ export default function DarkTheme() {
   }
 
   return (
-    <div className="flex items-center border rounded-full border-neutral-200 p-1 dark:border-neutral-700">
+    <div className="flex items-center border rounded-full border-neutral-300 p-1 dark:border-neutral-700">
       <button
         type="button"
         className={`flex items-center rounded-full p-1 text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-200 dark:text-neutral-500 ${

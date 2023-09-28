@@ -10,9 +10,9 @@ type Product = {
 
 function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
   const classFullPrice =
-    'flex items-center gap-2 absolute backdrop-blur bottom-48 left-28 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700';
+    'flex items-center gap-2 absolute backdrop-blur bottom-48 left-28 border rounded-full border-neutral-300 py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700';
   const classHalfPrice =
-    'flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700';
+    'flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full border-neutral-300 py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700';
   return (
     <div
       className={
@@ -37,7 +37,7 @@ function Item({ item, size }: { item: Product; size: 'full' | 'half' }) {
           className="group-hover:scale-105 transition-transform"
           priority={true}
         />
-        <div className={size === 'full' ? classFullPrice : classHalfPrice}>
+        <div className="flex items-center gap-2 absolute backdrop-blur bottom-3 left-3 border rounded-full border-neutral-300 py-1 px-1 pl-2 bg-neutral-100 bg-opacity-30 dark:bg-neutral-900 dark:border-neutral-700">
           <div className="text-xs">{item.name}</div>
           <div className="text-xs text-center rounded-full py-1 px-2 text-white bg-blue-500">
             ${item.price} USD
