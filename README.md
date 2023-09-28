@@ -11,5 +11,5 @@ Build an ecommerce with Stripe Checkout, based on Next.js template.
 - Integration with Stripe Checkout
 - Fetch products from Firebase API
 - Styling with Tailwind CSS
-- Automatic light/dark mode based on system settings
 - Responsive UI
+- With Dark Theme
